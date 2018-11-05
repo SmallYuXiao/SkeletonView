@@ -115,17 +115,17 @@ github "Juanpe/SkeletonView"
 import SkeletonView
 ```
 
-**2.** Now, set which views will be `skeletonables`. You achieve this in two ways:
+**2.** 现在，设置哪些视图将是可骨架的。您可以通过两种方式实现此目标
 
-**Using code:**
+**使用代码：:**
 ```swift
 avatarImageView.isSkeletonable = true
 ```
-**Using IB/Storyboards:**
+**使用IB / Storyboards:**
 
 ![](Assets/storyboard.png)
 
-**3.** Once you've set the views, you can show the **skeleton**. To do so, you have **4** choices:
+**3.** 设置视图后，您可以显示骨架。为此，您有4种选择：
 
 ```swift
 (1) view.showSkeleton()                 // Solid
@@ -167,16 +167,16 @@ avatarImageView.isSkeletonable = true
 </tr>
 </table>
 
-> **IMPORTANT!**
->>```SkeletonView``` is recursive, so if you want show the skeleton in all skeletonable views, you only need to call the show method in the main container view. For example, with UIViewControllers
+> **重要！**
+>>SkeletonView是递归的，因此如果要在所有可骨架视图中显示骨架，只需要在主容器视图中调用show方法。例如，使用UIViewControllers
 
 ### 🌿 Collections
 
- Now, ```SkeletonView``` is compatible with ```UITableView``` and ```UICollectionView```.
+ 现在，SkeletonView与UITableView和UICollectionView兼容。
 
 ###### UITableView
 
-If you want to show the skeleton in a ```UITableView```, you need to conform to ```SkeletonTableViewDataSource``` protocol.
+如果要在UITableView中显示骨架，则需要符合SkeletonTableViewDataSource协议。
 
 ``` swift
 public protocol SkeletonTableViewDataSource: UITableViewDataSource {
@@ -185,9 +185,9 @@ public protocol SkeletonTableViewDataSource: UITableViewDataSource {
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier
 }
 ```
-As you can see, this protocol inherits from ```UITableViewDataSource```, so you can replace this protocol with the skeleton protocol.
+如您所见，此协议继承自UITableViewDataSource，因此您可以使用框架协议替换此协议。
 
-This protocol has a default implementation:
+该协议具有默认实现：
 
 ``` swift
 func numSections(in collectionSkeletonView: UITableView) -> Int
@@ -200,12 +200,12 @@ func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection s
 // It calculates how many cells need to populate whole tableview
 ```
 
-There is only one method you need to implement to let Skeleton know the cell identifier. This method doesn't have default implementation:
+为了让Skeleton知道单元标识符，您只需要实现一种方法。此方法没有默认实现：
  ``` swift
  func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier
  ```
 
-**Example**
+**例, 例子**
  ``` swift
  func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
     return "CellIdentifier"
@@ -213,7 +213,7 @@ There is only one method you need to implement to let Skeleton know the cell ide
  ```
 
 > **IMPORTANT!**
-> If you are using resizable cells (`tableView.rowHeight = UITableViewAutomaticDimension` ), it's mandatory define the `estimatedRowHeight`.
+> 重要！如果您使用可调整大小的单元格（tableView.rowHeight = UITableViewAutomaticDimension），则必须定义estimatedRowHeight。
 
 ###### UICollectionView
 
@@ -227,64 +227,64 @@ public protocol SkeletonCollectionViewDataSource: UICollectionViewDataSource {
 }
 ```
 
-The rest of the process is the same as ```UITableView```
+对于UICollectionView，您需要符合SkeletonCollectionViewDataSource协议。
 
-### 📰 Multiline text
+### 📰 多行文字
 
 
 ![](Assets/multilines2.png)
 
-When using elements with text, ```SkeletonView``` draws lines to simulate text.
-Besides, you can decide how many lines you want. If  ```numberOfLines``` is set to zero, it will calculate how many lines needed to populate the whole skeleton and it will be drawn. Instead, if you set it to one, two or any number greater than zero, it will only draw this number of lines.
+使用带有文本的元素时，SkeletonView会绘制线条来模拟文本。此外，您可以决定您想要多少行。如果numberOfLines设置为零，它将计算填充整个骨架所需的行数，并将绘制它。相反，如果将其设置为一，二或任何大于零的数字，它将只绘制此行数。
 
-##### 🎛 Customize
 
-You can set some properties for multilines elements.
+##### 🎛 定制、自定义
+
+您可以为多行元素设置一些属性。
 
 
 | Property | Values | Default | Preview
 | ------- | ------- |------- | -------
-| **Filling percent** of the last line. | `0...100` | `70%` | ![](Assets/multiline_lastline.png)
-| **Corner radius** of lines. (**NEW**) | `0...10` | `0` | ![](Assets/multiline_corner.png)
+| 填写最后一行的百分比。 | `0...100` | `70%` | ![](Assets/multiline_lastline.png)
+| 拐角半径。 （新） | `0...10` | `0` | ![](Assets/multiline_corner.png)
 
 
 
-To modify the percent or radius **using code**, set the properties:
+要使用代码修改百分比或半径，请设置属性：
 ```swift
 descriptionTextView.lastLineFillPercent = 50
 descriptionTextView.linesCornerRadius = 5
 ```
 
-Or, if you prefer use **IB/Storyboard**:
+或者，如果您更喜欢使用IB / Storyboard：
 
 ![](Assets/multiline_customize.png)
 
-### 🎨 Custom colors
+### 🎨 自定义颜色
 
-You can decide which color the skeleton is tinted with. You only need to pass as a parameter the color or gradient you want.
+您可以决定骨架着色的颜色。您只需要将所需的颜色或渐变作为参数传递。
 
-**Using solid colors**
+**使用纯色**
 ``` swift
 view.showSkeleton(usingColor: UIColor.gray) // Solid
 // or
 view.showSkeleton(usingColor: UIColor(red: 25.0, green: 30.0, blue: 255.0, alpha: 1.0))
 ```
-**Using gradients**
+**使用渐变**
 ``` swift
 let gradient = SkeletonGradient(baseColor: UIColor.midnightBlue)
 view.showGradientSkeleton(usingGradient: gradient) // Gradient
 ```
 
-Besides, ```SkeletonView``` features 20 flat colors 🤙🏼
+此外，SkeletonView还有20种平面颜色🤙🏼
 
 ```UIColor.turquoise, UIColor.greenSea, UIColor.sunFlower, UIColor.flatOrange  ...```
 
 ![](Assets/flatcolors.png)
-###### Image captured from website [https://flatuicolors.com](https://flatuicolors.com)
+###### 从网站捕获的图像 [https://flatuicolors.com](https://flatuicolors.com)
 
 ### 🦋 Appearance
 
-**NEW** The skeletons have a default appearance. So, when you don't specify the color, gradient or multilines properties, `SkeletonView` uses the default values.
+**NEW** 新骨架具有默认外观。因此，当您未指定颜色，渐变或多线属性时，SkeletonView将使用默认值。
 
 Default values:
 - **tintColor**: UIColor
@@ -300,27 +300,26 @@ Default values:
 - **multilineCornerRadius**: Int
   - *default: 0*
 
-To get these default values you can use `SkeletonAppearance.default`. Using this property you can set the values as well:
+要获取这些默认值，您可以使用SkeletonAppearance.default。使用此属性您也可以设置值：
 ```Swift
 SkeletonAppearance.default.multilineHeight = 20
 SkeletonAppearance.default.tintColor = .green
 ```
 
 
-### 🤓 Custom animations
+### 🤓 自定义动画
 
-```SkeletonView``` has two built-in animations, *pulse* for solid skeletons and *sliding* for gradients.
+```SkeletonView``` 有两个内置动画，固体骨架脉冲和渐变滑动
+此外，如果你想做自己的骨架动画，那真的很容易。
 
-Besides, if you want to do your own skeleton animation, it's really easy.
 
-
-Skeleton provides the `showAnimatedSkeleton` function which has a ```SkeletonLayerAnimation``` closure where you can define your custom animation.
+Skeleton提供showAnimatedSkeleton函数，该函数具有SkeletonLayerAnimation闭包，您可以在其中定义自定义动画。
 
 ```swift
 public typealias SkeletonLayerAnimation = (CALayer) -> CAAnimation
 ```
 
-You can call the function like this:
+您可以像这样调用函数：:
 
 ```swift
 view.showAnimatedSkeleton { (layer) -> CAAnimation in
@@ -331,9 +330,9 @@ view.showAnimatedSkeleton { (layer) -> CAAnimation in
 }
 ```
 
-It's available ```SkeletonAnimationBuilder```. It's a builder to make ```SkeletonLayerAnimation```.
+它是可用的SkeletonAnimationBuilder。它是制作SkeletonLayerAnimation的构建器。
 
-Today, you can create **sliding animations** for gradients, deciding the **direction** and setting the **duration** of the animation (default = 1.5s).
+今天，您可以为渐变创建滑动动画，确定方向并设置动画的持续时间（默认值= 1.5秒）
 
 ```swift
 // func makeSlidingAnimation(withDirection direction: GradientDirection, duration: CFTimeInterval = 1.5) -> SkeletonLayerAnimation
