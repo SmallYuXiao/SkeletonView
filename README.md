@@ -35,9 +35,9 @@
 [🇨🇳](https://github.com/Juanpe/SkeletonView/blob/master/README_zh.md) by [@WhatsXie](https://twitter.com/WhatsXie) </br>
 [🇧🇷](https://github.com/Juanpe/SkeletonView/blob/master/README_pt-br.md) by [@brunomunizaf](https://twitter.com/brunomuniz_af)
 
-Today almost all apps have async processes, such as Api requests, long running processes, etc. And while the processes are working, usually developers place a loading view to show users that something is going on.
+今天，几乎所有的应用程序都有异步流程，例如Api请求，长时间运行的流程等。虽然流程正在运行，但通常开发人员会设置一个加载视图来向用户显示正在发生的事情
 
-```SkeletonView``` has been conceived to address this need, an elegant way to show users that something is happening and also prepare them to which contents he is waiting.
+```SkeletonView``` 已经构想出来满足这种需求，这是一种优雅的方式，向用户展示正在发生的事情，并为他们准备等待的内容做好准备。
 
 Enjoy it! 🙂
 
@@ -66,15 +66,15 @@ Enjoy it! 🙂
 
 ## 🌟 Features
 
-- [x] Easy to use
-- [x] All UIViews are skeletonables
-- [x] Fully customizable
-- [x] Universal (iPhone & iPad)
-- [x] Interface Builder friendly
-- [x] Simple Swift syntax
-- [x] Lightweight readable codebase
+- [x] 使用方便
+- [x] 所有UIView都是骷髅
+- [x] 完全可定制
+- [x] 通用（iPhone和iPad）
+- [x] Interface Builder友好
+- [x] 简单的Swift语法
+- [x] 轻量级可读代码库
 
-### 📋 Supported OS & SDK Versions
+### 📋 支持的操作系统和SDK版本
 
 * iOS 9.0+
 * tvOS 9.0+
@@ -86,13 +86,13 @@ Enjoy it! 🙂
 
 ### 🔮 Example
 
-To run the example project, clone the repo and run `SkeletonViewExample` target.
+要运行示例项目，请克隆repo并运行SkeletonViewExample目标。
 
 ## 📲 Installation
 
 #### Using [CocoaPods](https://cocoapods.org)
 
-Edit your `Podfile` and specify the dependency:
+编辑Podfile并指定依赖项：
 
 ```ruby
 pod "SkeletonView"
@@ -108,9 +108,9 @@ github "Juanpe/SkeletonView"
 
 ## 🐒 How to use
 
-Only **3** steps needed to use `SkeletonView`:
+使用SkeletonView只需要3个步骤：
 
-**1.** Import SkeletonView in proper place.
+**1.** 在适当的位置导入SkeletonView。
 ```swift
 import SkeletonView
 ```
